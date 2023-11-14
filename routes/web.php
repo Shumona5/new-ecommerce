@@ -30,6 +30,9 @@ Route::get('/categories/edit',[CategoriesController::class,'edit'])->name('categ
 Route::post('/categories/update',[CategoriesController::class,'update'])->name('categories.update');
 Route::get('/categories/delete',[CategoriesController::class,'delete'])->name('categories.delete');
 
-Route::get('brand',[BrandController::class,'list'])->name('brand.list');
+Route::get('/brand',[BrandController::class,'list'])->name('brand.list');
+Route::get('/create/brand',[BrandController::class,'create'])->name('brand.create');
+Route::post('/store/brand',[BrandController::class,'store'])->name('brand.store');
+
 Route::get('order',[OrderController::class,'list'])->name('order.list');
-Route::get('product',[ProductController::class,'list'])->name('product.list');
+Route::get('product',[ProductController::class,'list'])->name('product.list'); 

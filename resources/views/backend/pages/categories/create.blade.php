@@ -3,7 +3,7 @@
 
 <form>
   <div class="form-group">
-    <label for="name"> Name </label>
+    <label for="name"> Name </label>brand_name
     <input type="text" class="form-control" id="name"  placeholder="Enter category Name">
       </div>
   <div class="form-group">
@@ -16,7 +16,10 @@
   </div>
   <div class="form-group">
     <label for="status"> Status </label>
-   <select> </select>
+   <select class="form-control" id="status"> 
+    <option value="Active"> Active </option>
+    <option value="Inactive"> Inactive </option>
+   </select>
   </div>
   
   <button type="submit" class="btn btn-primary">Submit</button>
