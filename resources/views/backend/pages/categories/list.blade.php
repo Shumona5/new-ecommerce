@@ -6,32 +6,38 @@
 <h1>Categories</h1>
 
 
-<a href="{{route('category.create.form')}}" class="btn btn-success">Create</a>
+<a href="{{route('categories.create')}}" class="btn btn-success">Create</a>
 
 
-    <table class="table">
-        <thead>
+<table class="table">
+    <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">Serial</th>
+            <th scope="col">Name</th>
+            <th scope="col">Image</th>
+            <th scope="col">Action</th>
         </tr>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
 
-        @foreach($categories as $key=>$cat)
+        @foreach($categories as $key=>$category)
         <tr>
             <th scope="row">{{$key+1}}</th>
-            <td>{{$cat->name}}</td>
-            <td>{{$cat->status}}</td>
-            <td>{{$cat->description}}</td>
+            <td>{{$category->name}}</td>
+            <td>
+                <img src="" alt="">
+            </td>
+            <td>
+                <a class="btn btn-primary" href="">View</a>
+                <a class="btn btn-warning" href="">Edit</a>
+                <a class="btn btn-danger" href="">Delete</a>
+            </td>
         </tr>
         @endforeach
 
-        </tbody>
-    </table>
+    </tbody>
+</table>
 
-    {{$categories->links()}}
+
 
 @endsection

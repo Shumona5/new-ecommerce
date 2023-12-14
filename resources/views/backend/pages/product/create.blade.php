@@ -4,7 +4,8 @@
 
 <h1>Create new product</h1>
 
-@if(session()->has('msg'))
+<!-- Session Message -->
+<!-- @if(session()->has('msg'))
 <p class="alert alert-success"> {{session()->get('msg')}}</p>
 @endif
 
@@ -14,9 +15,9 @@
                <p class="alert alert-danger"> {{$error}}</p>
             </div>
         @endforeach
-    @endif
+    @endif -->
 
-    <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
+    <form action="{{route('product.store')}}" method="post" >
         @csrf
 
        <div class="form-group">
@@ -29,18 +30,15 @@
             <textarea name="description" class="form-control" placeholder="Enter Description"></textarea>
         </div>
 
-
         <div class="form-group">
-            <label for="a">Select Category</label>
-           <select class="form-control" name="category_id" id="a">
-            
-           @foreach($categories as $cat)
-            <option value="{{$cat->id}}">{{$cat->name}}</option>
-           
-            @endforeach
-           
-        </select>
+            <label for="category_id"> Select Category </label>
+          <select  class="form-control" name="category_id" id="category_id"> 
+            @foreach($categories as $category)
+             <option value="{{$category->id}}"> {{$category->name}} </option>
+             @endforeach
+          </select>
         </div>
+        
 
 
         <div class="form-group">
@@ -53,13 +51,24 @@
            <input min='100' type="number" class="form-control" required name="product_price" placeholder="Enter Product Price">
        </div>
        <div class="form-group">
-           <label for="">Enter Stock</label>
-           <input min='10' type="number" class="form-control" required name="product_stock" placeholder="Enter Product Stock">
-       </div>
-
+           <label for="">Enter Quantity </label>
+           <input min='10' type="number" class="form-control" required name="quantity" placeholder="Enter Product Quantity">
+       </div> 
+       <div class="form-group">
+           <label for="">Enter Discount </label>
+           <input type="number" class="form-control" required name="discount" placeholder="Enter Product Discount">
+       </div> 
+       <div class="form-group">
+           <label for="">Enter Discount Type </label>
+           <select class="form-control" name="discount_type" id="">
+            <option value="amount"> Amount </option>
+            <option value="percentage"> Percentage </option>
+           </select>
+       </div> 
+        <br>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
-
+<br>
 
 @endsection

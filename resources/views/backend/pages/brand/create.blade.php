@@ -17,7 +17,7 @@
 
         <div class="form-group">
             <label for="status"> Select Status </label>
-            <select class="form-control" id=""> 
+            <select name="status" class="form-control" id=""> 
                 <option value="Active"> Active </option>
                 <option value="Inactive"> Inactive</option>
             </select>

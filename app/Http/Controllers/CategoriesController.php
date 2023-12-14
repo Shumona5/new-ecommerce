@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use PHPUnit\Framework\TestStatus\Notice;
 use Symfony\Contracts\Service\Attribute\Required;
 
 class CategoriesController extends Controller
 {
     public function list()
     {
-        return view('backend.pages.categories.list');
+        $categories=Category::all();
+        return view('backend.pages.categories.list',compact('categories'));
     }
 
     public function create()
@@ -21,33 +23,26 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
+        //  dd($request->all());
+
         $validate=Validator::make($request->all(),[
             'name'=>'required',
-            'status'=>'required'
-         
+            'status'=>'required',
+
         ]);
 
-        $fileName=null;
-        if($request->hasFile('image')){
-
-            $fileName=date('ymdhsis'). "." . $request->file('image')->getClientOriginalExtension();
-            $request->file('image')->storeAs('/uploads',$fileName);
+        if($validate->fails()){
+        return redirect()->back()->withErrors($validate)->withInput();
         }
 
         Category::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            'image'=>$fileName,
-            'status'=>$request->status,
-
-
+            // 'image'=>$request->name,
+           
         ]);
-        
-        return redirect()->route('Category Created Successfully');
+
+        return redirect()->route('categories.list');
     }
 
-    public function edit()
-    {
-        return view('backend.categories.edit');
     }
-}

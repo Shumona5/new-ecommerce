@@ -19,11 +19,17 @@ class BrandController extends Controller
 
     public function store(Request $request)
     {
+        //   dd($request->all());
         $validate=Validator::make($request->all(),[
             'brand_name'=>'required',
             'status'=>'required',
 
         ]);
+
+        if($validate->fails()){
+           
+            return redirect()->back()->withErrors($validate)->withInput();
+        }
 
         Brand::create([
             'name'=>$request->brand_name,
