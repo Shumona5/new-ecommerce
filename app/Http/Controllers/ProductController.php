@@ -11,7 +11,7 @@ class ProductController extends Controller
 {
     public function list()
     {
-        $products=Product::all();
+        $products=Product::paginate(5);
         return view('backend.pages.product.list',compact('products'));
     }
 

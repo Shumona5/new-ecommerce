@@ -26,8 +26,9 @@ Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('/categories',[CategoriesController::class,'list'])->name('categories.list');
 Route::get('/categories/create',[CategoriesController::class,'create'])->name('categories.create');
 Route::post('/categories/store',[CategoriesController::class,'store'])->name('categories.store');
-Route::get('/categories/edit',[CategoriesController::class,'edit'])->name('categories.edit');
+Route::get('/categories/edit/{$id}',[CategoriesController::class,'edit'])->name('categories.edit');
 Route::post('/categories/update',[CategoriesController::class,'update'])->name('categories.update');
+Route::post('/categories/view',[CategoriesController::class,'view'])->name('categories.view');
 Route::get('/categories/delete',[CategoriesController::class,'delete'])->name('categories.delete');
 
 Route::get('/brand',[BrandController::class,'list'])->name('brand.list');

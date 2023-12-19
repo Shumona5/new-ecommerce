@@ -29,7 +29,7 @@
             </td>
             <td>
                 <a class="btn btn-primary" href="">View</a>
-                <a class="btn btn-warning" href="">Edit</a>
+                <a class="btn btn-warning" href="{{route('categories.edit')}}">Edit</a>
                 <a class="btn btn-danger" href="">Delete</a>
             </td>
         </tr>
@@ -38,6 +38,6 @@
     </tbody>
 </table>
 
-
+{{$categories->links()}}
 
 @endsection

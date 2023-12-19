@@ -12,7 +12,7 @@ class CategoriesController extends Controller
 {
     public function list()
     {
-        $categories=Category::all();
+        $categories=Category::paginate(5);
         return view('backend.pages.categories.list',compact('categories'));
     }
 
@@ -43,6 +43,12 @@ class CategoriesController extends Controller
         ]);
 
         return redirect()->route('categories.list');
+    }
+
+
+    public function edit($category_id)
+    {
+        return view('backend.pages.categories.edit');
     }
 
     }

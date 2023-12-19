@@ -8,7 +8,7 @@ class BrandController extends Controller
 {
     public function list()
     {
-        $brands=Brand::all();
+        $brands=Brand::paginate(5);
         return view('backend.pages.brand.list',compact('brands'));
     }
 
