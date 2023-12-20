@@ -25,12 +25,12 @@
             <th scope="row">{{$key+1}}</th>
             <td>{{$category->name}}</td>
             <td>
-                <img src="" alt="">
+                <img height="100" width="150" src="{{url('/uploads/'.$category->image)}}" alt="">
             </td>
             <td>
                 <a class="btn btn-primary" href="">View</a>
-                <a class="btn btn-warning" href="{{route('categories.edit')}}">Edit</a>
-                <a class="btn btn-danger" href="">Delete</a>
+                <a class="btn btn-warning" href="{{route('categories.edit',$category->id)}}">Edit</a>
+                <a class="btn btn-danger" href="">Delete</a> 
             </td>
         </tr>
         @endforeach

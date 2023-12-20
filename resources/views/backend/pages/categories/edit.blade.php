@@ -1,7 +1,7 @@
 @extends('backend.master')
 @section('content')
 
-<form action="{{route('categories.update')}}" method="Post" enctype="multipart/form-data">
+<form action="" method="Post" enctype="multipart/form-data">
   @csrf 
   <div class="form-group">
     <label for="name"> Name </label>

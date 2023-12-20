@@ -23,7 +23,7 @@ class CategoriesController extends Controller
 
     public function store(Request $request)
     {
-        //  dd($request->all());
+        //   dd($request->all());
 
         $validate=Validator::make($request->all(),[
             'name'=>'required',
@@ -35,10 +35,16 @@ class CategoriesController extends Controller
         return redirect()->back()->withErrors($validate)->withInput();
         }
 
+        $fileName=null;
+        if($request->hasFile('image')){
+            $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads',$fileName);
+        }
+
         Category::create([
             'name'=>$request->name,
             'description'=>$request->description,
-            // 'image'=>$request->name,
+             'image'=>$fileName,
            
         ]);
 
