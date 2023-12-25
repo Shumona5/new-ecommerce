@@ -39,4 +39,35 @@ class BrandController extends Controller
 
         return redirect()->route('brand.list');
     }
+
+    public function edit($brand_id)
+    {
+        $brands=Brand::find($brand_id);
+        return view('backend.pages.brand.edit',compact('brands'));
+    }
+
+    public function update(Request $request,$brand_id)
+    {
+        // dd($request->all());
+        $brands=Brand::find($brand_id);
+
+        $validate=Validator::make($request->all(),[
+            'brand_name'=>'required',
+            'status'=>'required',
+
+        ]);
+
+        if($validate->fails()){
+           
+            return redirect()->back()->withErrors($validate)->withInput();
+        } 
+
+        $brands->update([
+            'name'=>$request->brand_name,
+            'description'=>$request->description,
+            'status'=>$request->status,
+
+        ]);
+        return redirect()->route('brand.list');
+    }
 }

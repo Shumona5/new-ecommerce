@@ -27,12 +27,13 @@
       <td> {{$product->name}} </td>
       <td>{{$product->category_id}}</td>
       <td>
-        <img style="width: 50px;" src="" alt="">
+        <!-- <img style="width: 50px;" src="{{url('/uploads/'.$product->image)}}" alt="image"> -->
+        <img height="100" width="150" src="{{url('/uploads/'.$product->image)}}" alt="">
       </td>
       <td>{{$product->status}}</td>
       <td>
         <a class="btn btn-primary"  href="">View</a>
-        <a class="btn btn-warning"  href="">Edit</a>
+        <a class="btn btn-warning"  href="{{route('product.edit',$product->id)}}">Edit</a>
         <a  class="btn btn-danger" href="">Delete</a>
       </td>
     </tr>

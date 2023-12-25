@@ -54,7 +54,39 @@ class CategoriesController extends Controller
 
     public function edit($category_id)
     {
-        return view('backend.pages.categories.edit');
+        $categories=Category::find($category_id);
+        return view('backend.pages.categories.edit',compact('categories'));
+    }
+
+    public function update(Request $request,$category_id){
+
+        $categories=Category::find($category_id);
+
+        $validate=Validator::make($request->all(),[
+            'name'=>'required',
+            'status'=>'required',
+
+        ]);
+
+        if($validate->fails()){
+        return redirect()->back()->withErrors($validate)->withInput();
+        }
+
+        $fileName=null;
+        if($request->hasFile('image')){
+            $fileName=date('Ymdhmi').'.'. $request->file('image')->getClientOriginalExtension();
+            $request->file('image')->storeAs('/uploads',$fileName);
+        }
+
+        $categories->update([
+
+            'name'=>$request->name,
+            'description'=>$request->description,
+            'image'=>$fileName,
+            'status'=>$request->status,
+
+        ]);
+        return redirect()->route('categories.list');
     }
 
     }

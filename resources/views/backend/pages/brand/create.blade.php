@@ -2,6 +2,8 @@
 
 @section('content')
 
+<h1> Create New Brand </h1>
+
 <form action="{{route('brand.store')}}" method="post">
         @csrf
 

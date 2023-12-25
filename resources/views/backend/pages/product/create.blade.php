@@ -17,7 +17,7 @@
         @endforeach
     @endif -->
 
-    <form action="{{route('product.store')}}" method="post" >
+    <form action="{{route('product.store')}}" method="post" enctype="multipart/form-data">
         @csrf
 
        <div class="form-group">
@@ -48,11 +48,15 @@
 
        <div class="form-group">
            <label for="">Enter Price</label>
-           <input min='100' type="number" class="form-control" required name="product_price" placeholder="Enter Product Price">
+           <input  type="number" class="form-control" required name="product_price" placeholder="Enter Product Price">
+           @error('product_price') 
+           <div class="alert alert-danger"> {{$message}}</div>
+           @enderror
+           
        </div>
        <div class="form-group">
            <label for="">Enter Quantity </label>
-           <input min='10' type="number" class="form-control" required name="quantity" placeholder="Enter Product Quantity">
+           <input  type="number" class="form-control" required name="quantity" placeholder="Enter Product Quantity">
        </div> 
        <div class="form-group">
            <label for="">Enter Discount </label>

@@ -26,17 +26,19 @@ Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
 Route::get('/categories',[CategoriesController::class,'list'])->name('categories.list');
 Route::get('/categories/create',[CategoriesController::class,'create'])->name('categories.create');
 Route::post('/categories/store',[CategoriesController::class,'store'])->name('categories.store');
-Route::get('/categories/edit/{$id}',[CategoriesController::class,'edit'])->name('categories.edit');
-Route::post('/categories/update',[CategoriesController::class,'update'])->name('categories.update');
-Route::post('/categories/view',[CategoriesController::class,'view'])->name('categories.view');
-Route::get('/categories/delete',[CategoriesController::class,'delete'])->name('categories.delete');
+Route::get('/categories/edit/{id}',[CategoriesController::class,'edit'])->name('categories.edit');
+Route::put('/categories/update/{id}',[CategoriesController::class,'update'])->name('categories.update');
 
 Route::get('/brand',[BrandController::class,'list'])->name('brand.list');
 Route::get('/create/brand',[BrandController::class,'create'])->name('brand.create');
 Route::post('/store/brand',[BrandController::class,'store'])->name('brand.store');
+Route::get('/brand/edit/{id}',[BrandController::class,'edit'])->name('brand.edit');
+Route::put('/brand/update/{id}',[BrandController::class,'update'])->name('brand.update');
 
 Route::get('order',[OrderController::class,'list'])->name('order.list');
 
-Route::get('product',[ProductController::class,'list'])->name('product.list'); 
-Route::get('product/create',[ProductController::class,'create'])->name('product.create'); 
-Route::post('product/store',[ProductController::class,'store'])->name('product.store'); 
+Route::get('/product',[ProductController::class,'list'])->name('product.list'); 
+Route::get('/product/create',[ProductController::class,'create'])->name('product.create'); 
+Route::post('/product/store',[ProductController::class,'store'])->name('product.store'); 
+Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit'); 
+Route::put('/product/update/{id}',[ProductController::class,'update'])->name('product.update'); 
