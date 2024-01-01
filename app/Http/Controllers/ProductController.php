@@ -29,7 +29,9 @@ class ProductController extends Controller
 
             'product_name'=>'required',
             'category_id'=>'required',
-            'product_price'=>'numeric|gt:0'
+            'product_price'=>'numeric|gt:0',
+            'quantity'=>'numeric|gt:0',
+            'discount'=>'numeric|gt:0'
         ]);
         
         if($validate->fails()){
@@ -54,6 +56,7 @@ class ProductController extends Controller
             
         ]);
        
+        notify()->success('Product Created Successfully');
         return redirect()->route('product.list');
 
     }
@@ -99,7 +102,23 @@ class ProductController extends Controller
             'status'=>$request->status,
 
         ]);
+
+        notify()->success('Product Updated Successfully');
         return redirect()->route('product.list');
 
+    }
+
+    public function delete($id){
+
+        $products=Product::find($id);
+        if($products){
+            $products->delete();
+            notify()->success('Product Deleted Successfully');
+            return redirect()->route('product.list');
+        }else{
+            notify()->error('Product Cannot Delete');
+            return redirect()->route('product.list');
+
+        }
     }
 }

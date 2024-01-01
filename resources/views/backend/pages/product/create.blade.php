@@ -22,12 +22,12 @@
 
        <div class="form-group">
            <label for="">Enter Product Name <span style="color:red">*</span></label>
-           <input  type="text" class="form-control" required name="product_name" placeholder="Enter Product Name">
+           <input  type="text" class="form-control" required name="product_name" value="{{old('product_name')}}" placeholder="Enter Product Name">
        </div>
 
         <div class="form-group">
             <label for="">Enter Product Description</label>
-            <textarea name="description" class="form-control" placeholder="Enter Description"></textarea>
+            <textarea name="description" class="form-control" value="{{old('description')}}" placeholder="Enter Description"></textarea>
         </div>
 
         <div class="form-group">
@@ -48,7 +48,7 @@
 
        <div class="form-group">
            <label for="">Enter Price</label>
-           <input  type="number" class="form-control" required name="product_price" placeholder="Enter Product Price">
+           <input  type="number" class="form-control" required name="product_price" value="{{old('product_price')}}" placeholder="Enter Product Price">
            @error('product_price') 
            <div class="alert alert-danger"> {{$message}}</div>
            @enderror
@@ -56,11 +56,11 @@
        </div>
        <div class="form-group">
            <label for="">Enter Quantity </label>
-           <input  type="number" class="form-control" required name="quantity" placeholder="Enter Product Quantity">
+           <input  type="number" class="form-control" required name="quantity" value="{{old('quantity')}}" placeholder="Enter Product Quantity">
        </div> 
        <div class="form-group">
            <label for="">Enter Discount </label>
-           <input type="number" class="form-control" required name="discount" placeholder="Enter Product Discount">
+           <input type="number" class="form-control" required name="discount" value="{{old('discount')}}" placeholder="Enter Product Discount">
        </div> 
        <div class="form-group">
            <label for="">Enter Discount Type </label>

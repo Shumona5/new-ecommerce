@@ -10,9 +10,12 @@
         <title>Dashboard - SB Admin</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="{{url('css/styles.css')}}" rel="stylesheet" />
+        @notifyCss
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="sb-nav-fixed">
+
+    @include('notify::components.notify')
 
         @include('backend.fixed.header')
 
@@ -39,5 +42,6 @@
         <script src="assets/demo/chart-bar-demo.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
         <script src="{{('js/datatables-simple-demo.js')}}"></script>
+        @notifyJs
     </body>
 </html>

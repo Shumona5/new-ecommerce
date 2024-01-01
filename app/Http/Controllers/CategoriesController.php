@@ -48,6 +48,7 @@ class CategoriesController extends Controller
            
         ]);
 
+        notify()->success('Category Created Successfully');
         return redirect()->route('categories.list');
     }
 
@@ -86,7 +87,21 @@ class CategoriesController extends Controller
             'status'=>$request->status,
 
         ]);
+        notify()->success('Category Updated Successfully');
         return redirect()->route('categories.list');
+    }
+
+    public function delete($id){
+        
+        $categories=Category::find($id);
+        if($categories){
+            $categories->delete();
+            notify()->success('Category Deleted Successfully');
+            return redirect()->route('categories.list');
+        }else{
+            notify()->error('Category Not Found');
+            return redirect()->route('categories.list');
+        }
     }
 
     }

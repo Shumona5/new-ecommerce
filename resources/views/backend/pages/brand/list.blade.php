@@ -26,7 +26,7 @@
             <td>
                 <a class="btn btn-success" href="{{route('brand.edit',$brand->id)}}">Edit</a>
                 <a href="" class="btn btn-primary">Show</a>
-                <a href="" class="btn btn-danger">Delete</a>
+                <a href="{{route('brand.delete',$brand->id)}}" class="btn btn-danger">Delete</a>
             </td>
 
         </tr>

@@ -30,7 +30,7 @@
             <td>
                 <a class="btn btn-primary" href="">View</a> 
                 <a class="btn btn-warning" href="{{route('categories.edit',$category->id)}}">Edit</a> 
-                <a class="btn btn-danger" href="">Delete</a> 
+                <a class="btn btn-danger" href="{{route('categories.delete',$category->id)}}">Delete</a> 
             </td>
         </tr>
         @endforeach
