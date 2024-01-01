@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use PHPUnit\Framework\TestStatus\Notice;
@@ -92,8 +93,9 @@ class CategoriesController extends Controller
     }
 
     public function delete($id){
-        
-        $categories=Category::find($id);
+        try{
+
+            $categories=Category::find($id);
         if($categories){
             $categories->delete();
             notify()->success('Category Deleted Successfully');
@@ -102,6 +104,15 @@ class CategoriesController extends Controller
             notify()->error('Category Not Found');
             return redirect()->route('categories.list');
         }
+
+        }
+        catch(Exception){
+
+            notify()->error(' This Category Can Not Delete');
+            return redirect()->route('categories.list');
+
+        }
+        
     }
 
     }
