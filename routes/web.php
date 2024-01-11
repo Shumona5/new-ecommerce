@@ -5,6 +5,8 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\WebHomeController;
 use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,13 @@ use Illuminate\Support\Facades\Route;
 // Route::get('/', function () {
 //     return view('welcome');
 // });
+
+Route::get('/',[WebHomeController::class,'home'])->name('web.home');
+
+Route::get('/login',[UserController::class,'login'])->name('admin.login');
+Route::post('/login/store',[UserController::class,'doLogin'])->name('admin.doLogin');
+
+
 Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
 
 Route::get('/categories',[CategoriesController::class,'list'])->name('categories.list');
@@ -46,3 +55,7 @@ Route::post('/product/store',[ProductController::class,'store'])->name('product.
 Route::get('/product/edit/{id}',[ProductController::class,'edit'])->name('product.edit'); 
 Route::put('/product/update/{id}',[ProductController::class,'update'])->name('product.update'); 
 Route::get('/product/delete/{id}',[ProductController::class,'delete'])->name('product.delete');
+
+Route::get('/user',[UserController::class,'list'])->name('user.list');
+Route::get('/user/create',[UserController::class,'create'])->name('user.create');
+Route::post('/user/store',[UserController::class,'store'])->name('user.store');

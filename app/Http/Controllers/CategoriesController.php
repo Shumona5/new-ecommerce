@@ -96,23 +96,27 @@ class CategoriesController extends Controller
         try{
 
             $categories=Category::find($id);
+
         if($categories){
             $categories->delete();
-            notify()->success('Category Deleted Successfully');
+
+            notify()->success('Category Deleted Successfully.');
             return redirect()->route('categories.list');
         }else{
-            notify()->error('Category Not Found');
+            notify()->error('Category Not Found.');
             return redirect()->route('categories.list');
         }
 
         }
         catch(Exception){
 
-            notify()->error(' This Category Can Not Delete');
-            return redirect()->route('categories.list');
+            notify()->error('This Category Can Not Delete.');
+            return redirect()->back();
 
         }
         
     }
 
     }
+
+   
