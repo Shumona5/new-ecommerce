@@ -29,6 +29,7 @@ Route::get('/',[WebHomeController::class,'home'])->name('web.home');
 
 Route::get('/login',[UserController::class,'login'])->name('admin.login');
 Route::post('/login/store',[UserController::class,'doLogin'])->name('admin.doLogin');
+Route::get('/logout',[UserController::class,'logout'])->name('user.logout');
 
 
 Route::get('/',[DashboardController::class,'dashboard'])->name('dashboard');
